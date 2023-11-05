@@ -1,0 +1,8 @@
+/* calculator.component.css */
+.label-width {
+    width: 135px; /* Adjust the width as needed to match your desired label width */
+  }
+  .has-error input {
+    border-color: red;
+  }
+  

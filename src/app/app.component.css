@@ -1,0 +1,10 @@
+/* Add space between title and calculator card */
+h1 {
+    margin-bottom: 20px;
+  }
+  
+  /* Adjust the alignment of the calculator card */
+  .card {
+    margin-bottom: 20px;
+  }
+  

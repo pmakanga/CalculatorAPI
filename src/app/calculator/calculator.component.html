@@ -1,0 +1,56 @@
+<!-- calculator.component.html -->
+<div class="container mt-4">
+  <div class="d-flex justify-content-center">
+    <div class="card" style="width: 500px;">
+      <div class="card-body text-center">
+        <h4 class="card-title">Calculator</h4>
+        <div class="mb-3 input-group" [ngClass]="{'has-error': firstNumberInput.invalid}">
+          <label for="firstNumber" class="input-group-text label-width">First Number</label>
+          <input type="number" class="form-control" id="firstNumber" [(ngModel)]="firstNumber" name="firstNumber" #firstNumberInput="ngModel" required placeholder="Enter the first number" />
+        </div>
+        
+        <div class="mb-3 input-group" [ngClass]="{'has-error': secondNumberInput.invalid}">
+          <label for="secondNumber" class="input-group-text label-width">Second Number</label>
+          <input type="number" class="form-control" id="secondNumber" [(ngModel)]="secondNumber" name="secondNumber" #secondNumberInput="ngModel" required placeholder="Enter the second number" />
+        </div>        
+        <div class="mb-3 custom-dropdown input-group">
+          <label for="selectedOperator" class="input-group-text">Select Operator</label>
+          <select class="form-control" id="selectedOperator" [(ngModel)]="selectedOperator">
+            <option value="add">Addition</option>
+            <option value="subtract">Subtraction</option>
+            <option value="multiply">Multiplication</option>
+            <option value="divide">Division</option>
+          </select>
+        </div>
+        <div class="d-flex justify-content-center"> <!-- Center the buttons -->
+          <button class="btn btn-primary" (click)="calculate()">Calculate</button>
+          <button class="btn btn-danger" (click)="clearAndReload()" style="margin-left: 10px;">Clear</button> <!-- Adjust margin as needed -->
+        </div>        
+      </div>
+	    <div *ngIf="result !== null" class="mt-4">
+        <div class="alert alert-success" role="alert">
+          Result: {{ result }}
+        </div>
+      </div>
+      <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+        {{ errorMessage }}
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center mt-4">
+    <div class="card" style="width: 500px;">
+      <div class="card-body text-center">
+        <h4 class="card-title">Calculation History</h4>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let calculation of calculationHistory">
+            <span class="font-weight-bold">
+              {{ calculation.firstNumber }} {{ calculation.operator }} {{ calculation.secondNumber }}
+            </span>
+            <span class="float-right">= {{ calculation.result }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
